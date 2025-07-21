@@ -1,8 +1,7 @@
 # Phoenix-HPC-nextflow-config
 Dans base nextflow.config for running nextflow processes on the Phoenix HPC
-- optimised for nf-core
-- works with Epi2me workflows
-- nextflow will read this if it is kept in the run directory
+- optimised for nextflow / nf-core 
+- nextflow will read this if it is kept in the run directory, or can be specified with -c 
 - For specific nextflow pipelines and processes extra argument '-c' can point to those
 
 e.g.
