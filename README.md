@@ -19,35 +19,30 @@ process {
 nextflow.config
 ```
 params {
-  config_profile_description = 'Dans Phoenix HPC nextflow config'
+  config_profile_description = 'Dans Phoenix HPC nextflow config Aug2025'
   config_profile_contact = 'daniel.thomson@adelaide.edu.au'
   max_memory = 188.GB
   max_cpus = 64
   max_time = 72.h
-  igenomes_base = '/home/a1205810/references/igenomes'
+  igenomes_base = '/home/$USER/references/igenomes'
 }
 
 process {
-  resourceLimits = [
-        memory: 188.GB,
-        cpus: 64,
-        time: 48.h
-    ]
    beforeScript = 'module load Singularity/3.10.5'
+   beforeScript = 'module load Nextflow/25.04.3'
    executor = 'slurm'
    maxRetries = 2
-   clusterOptions="-N 1 -p icelake,highmem"
 }
 
 singularity {
   enabled = true
   autoMounts = true
-  cacheDir="/hpcfs/users/a1205810/"
+  cacheDir="/hpcfs/users/$USER/"
   envWhitelist = 'SINGULARITY_BINDPATH'
 }
 
 executor {
-    queueSize       = 50
+    queueSize       = 20
     submitRateLimit = '10 sec'
 }
 
@@ -59,6 +54,6 @@ profiles {
 
 // Set custom cache directory
 cache {
-    dir = '/hpcfs/users/a1205810/containers/'
+    dir = '/hpcfs/users/$USER/containers/'
 }
 ```
